@@ -14,7 +14,6 @@ Rails.application.routes.draw do
 
   resources :users, only: %i(index new create)
   resources :workspace_members, only: %i(index)
-
   resources :projects, only: %i(index)
 
   root to: "dashboards#index"
