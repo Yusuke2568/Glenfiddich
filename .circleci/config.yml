@@ -4,7 +4,7 @@ jobs:
   build:
     machine:
       image: circleci/classic:edge
-    working_directory: ~/task_management
+    working_directory: ~/Glenfiddich
     steps:
       - checkout
       - run:
