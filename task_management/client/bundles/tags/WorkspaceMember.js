@@ -5,16 +5,12 @@ export const INVITATION_WORKSPACE_MEMBER = gql`
     $name: String!
     $email: String!
     $role: Int!
-    $password: String!
-    $passwordConfirmation: String!
   ) {
     invitationWorkspaceMember(
       input: {
         name: $name
         email: $email
         role: $role
-        password: $password
-        passwordConfirmation: $passwordConfirmation
       }
     ) {
       workspaceMember {

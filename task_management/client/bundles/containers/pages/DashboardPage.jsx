@@ -23,14 +23,12 @@ const DashboardPage = props => {
   const [addWorkspaceMember, { loading: mutationLoading, error: mutationError }] = useMutation(INVITATION_WORKSPACE_MEMBER);
   const invitationErrorMessage = mutationError ? mutationError.graphQLErrors[0].message : '';
 
-  const invitationWorkspaceMember = (name, email, role, password, passwordConfirmation) => {
+  const invitationWorkspaceMember = (name, email, role) => {
     addWorkspaceMember({
       variables: {
         name: name,
         email: email,
         role: role,
-        password: password,
-        passwordConfirmation: passwordConfirmation,
       }
     });
   }

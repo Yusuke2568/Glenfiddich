@@ -25,8 +25,6 @@ export const AddWorkspaceMemberModal = ({open, handleClose, invitationWorkspaceM
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [role, setRole] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordConfirmation, setPasswordConfirmation] = useState("");
 
   const classes = useStyles();
 
@@ -93,30 +91,6 @@ export const AddWorkspaceMemberModal = ({open, handleClose, invitationWorkspaceM
             })}
           </Select>
         </FormControl>
-        <TextField
-          autoFocus
-          margin="dense"
-          id="password"
-          label="パスワード"
-          type="password"
-          value={password}
-          onChange={e => {
-            setPassword(e.target.value);
-          }}
-          fullWidth
-        />
-        <TextField
-          autoFocus
-          margin="dense"
-          id="password-confirmation"
-          label="パスワード確認"
-          type="password"
-          value={passwordConfirmation}
-          onChange={e => {
-            setPasswordConfirmation(e.target.value);
-          }}
-          fullWidth
-        />
       </DialogContent>
       <DialogActions>
         <Button
@@ -128,8 +102,6 @@ export const AddWorkspaceMemberModal = ({open, handleClose, invitationWorkspaceM
               name,
               email,
               role,
-              password,
-              passwordConfirmation
             )
           }
         >
