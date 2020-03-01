@@ -104,6 +104,14 @@ GEM
     jaro_winkler (1.5.4)
     jbuilder (2.9.1)
       activesupport (>= 4.2.0)
+    launchy (2.5.0)
+      addressable (~> 2.7)
+    letter_opener (1.7.0)
+      launchy (~> 2.2)
+    letter_opener_web (1.4.0)
+      actionmailer (>= 3.2)
+      letter_opener (~> 1.0)
+      railties (>= 3.2)
     libv8 (7.3.492.27.1)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -308,6 +316,7 @@ DEPENDENCIES
   graphql
   html2slim
   jbuilder (~> 2.7)
+  letter_opener_web
   listen (>= 3.0.5, < 3.2)
   mini_racer
   mysql2 (>= 0.4.4)

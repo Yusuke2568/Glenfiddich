@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   resources :projects, only: %i(index)
 
   root to: "dashboards#index"
+
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 end
