@@ -1,3 +1,4 @@
+
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -84,6 +85,9 @@ CREATE TABLE `users` (
   `updated_at` datetime(6) NOT NULL,
   `remember_digest` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `role` tinyint(3) unsigned NOT NULL DEFAULT '1',
+  `invite_digest` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `invite_sent_at` datetime DEFAULT NULL,
+  `activated` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_users_on_email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -98,6 +102,7 @@ CREATE TABLE `workspace_members` (
   `role` tinyint(3) unsigned NOT NULL DEFAULT '1',
   `created_at` datetime(6) NOT NULL,
   `updated_at` datetime(6) NOT NULL,
+  `activated` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_workspace_members_on_user_id_and_workspace_id` (`user_id`,`workspace_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -135,4 +140,7 @@ INSERT INTO `schema_migrations` (version) VALUES
 ('20191209143500'),
 ('20191231112518'),
 ('20200101132843'),
-('20200101233420');
+('20200101233420'),
+('20200224084914');
+
+
