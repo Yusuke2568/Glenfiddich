@@ -9,4 +9,5 @@ class WorkspaceMember < ApplicationRecord
   validates :user, presence: true
   validates :workspace_id, uniqueness: { scope: :user_id }
   validates :role, presence: true
+  validates :activated, inclusion: {in: [true, false]}
 end

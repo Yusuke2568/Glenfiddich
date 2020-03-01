@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   resources :workspace_members, only: %i(index show)
 
   resources :projects, only: %i(index)
+  
+  resource :activation, only: %i(edit)
 
   root to: "dashboards#index"
 

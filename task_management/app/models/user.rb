@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  attr_accessor :remember_token
+  attr_accessor :remember_token, :invite_token
   enum role: { owner: 0, admin: 1, member: 2, guest: 3 }
   EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
@@ -12,10 +12,11 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :email, presence: true, length: { maximum: 255 }, format: { with: EMAIL_REGEX }, uniqueness: { case_sensitive: false }
   validates :role, presence: true
+  validates :activated, inclusion: {in: [true, false]}
 
   has_secure_password validations: true
 
-  def self.new_remember_token
+  def self.new_token
     SecureRandom.urlsafe_base64
   end
 
@@ -27,7 +28,7 @@ class User < ApplicationRecord
 
   # remember_token を生成し、ハッシュ化したものを remember_digest に保存しておく
   def remember
-    self.remember_token = User.new_remember_token
+    self.remember_token = User.new_token
     update_columns(remember_digest: User.digest(remember_token))
   end
 
@@ -52,5 +53,10 @@ class User < ApplicationRecord
   # 表示する workspace_member
   def current_workspace_member
     workspace_members.find_by(workspace: current_workspace)
+  end
+  
+  # 招待の期限が切れている場合はtrueを返す
+  def invitation_expired?
+    self.invite_sent_at < 24.hours.ago
   end
 end
