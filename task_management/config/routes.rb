@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   if Rails.env.development?
-    mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
+    mount GraphiQL::Rails::Engine, at: '/graphiql', graphql_path: '/graphql'
   end
-  post "/graphql", to: "graphql#execute"
+  post '/graphql', to: 'graphql#execute'
 
   # ログイン/ログアウト
   get 'login', to: 'sessions#new'
@@ -14,12 +14,12 @@ Rails.application.routes.draw do
 
   resources :users, only: %i(new create)
   resources :workspace_members, only: %i(index show)
-
+  resource :password_resets, only: %i(edit update)
   resources :projects, only: %i(index)
   
   get 'activations', to: 'activations#create'
 
-  root to: "dashboards#index"
+  root to: 'dashboards#index'
 
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 end
