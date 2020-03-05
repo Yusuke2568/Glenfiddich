@@ -4,11 +4,10 @@ p
   | #{@workspace.name}から招待されました！
 
 - unless @user.activated?
-  = link_to '利用を開始する', edit_activation_url(@user.invite_token, email: @user.email)
+  = link_to '利用を開始する', activations_url(@user.invite_token, email: @user.email)
   p
     | 上記のリンクよりご利用を開始してください
       このリンクは24時間で有効期限が切れますので、ご注意ください
 - else
   p
     | ワークスペースを切り替えてご利用を開始してください！
-
