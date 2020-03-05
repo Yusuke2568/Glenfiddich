@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   resources :projects, only: %i(index)
   
-  resource :activation, only: %i(edit)
+  get 'activations', to: 'activations#create'
 
   root to: "dashboards#index"
 
