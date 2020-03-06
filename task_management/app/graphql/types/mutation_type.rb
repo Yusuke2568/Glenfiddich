@@ -6,5 +6,6 @@ module Types
     field :invitationWorkspaceMember, mutation: Mutations::InvitationWorkspaceMember, description: 'ワークスペースメンバーを招待する'
     field :createProject, mutation: Mutations::CreateProject, description: 'プロジェクトを新規作成する'
     field :destroyWorkspaceMember, mutation: Mutations::DestroyWorkspaceMember, description: 'ワークスペースメンバーを削除する'
+    field :updatePassword, mutation: Mutations::UpdatePassword, description: 'パスワードを更新する'
   end
 end
